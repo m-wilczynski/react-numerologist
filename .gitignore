@@ -13,3 +13,6 @@ build
 .DS_Store
 .env
 npm-debug.log
+aspnet-api/.vs/
+aspnet-api/ReactNumerologist.WebApi/bin/
+aspnet-api/ReactNumerologist.WebApi/obj/
