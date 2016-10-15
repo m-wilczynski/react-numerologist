@@ -1,20 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
-import './css/normalize.css';
-import './css/skeleton.css';
-import './css/App.css';
+import '../css/normalize.css';
+import '../css/skeleton.css';
+import '../css/App.css';
+import logo from '../logo.png';
+import Home from './Home';
 
 class App extends React.Component {
     render() {
         return (
-            <div className="App">
-                <div className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <h2>Welcome to React</h2>
+            <div>
+                <div className="content-header">
+                    <img className="u-pull-left" src={logo} /><h2>React Numerologist</h2>
                 </div>
-                <p className="App-intro">
-                    To get started, edit <code>src/App.js</code> and save to reload.
-                </p>
+                <div className="content">
+                    {this.props.children || <Home/>}
+                </div>
             </div>
         );
     }

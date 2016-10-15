@@ -2,9 +2,11 @@ import React from 'react';
 
 class DefinitionByBirthdate extends React.Component {
     render() {
-        <div>
-            "Here be form for birthdate check"
-        </div>
+        return (
+            <div>
+                "Here be form for birthdate check"
+            </div>
+        );
     }
 }
 
