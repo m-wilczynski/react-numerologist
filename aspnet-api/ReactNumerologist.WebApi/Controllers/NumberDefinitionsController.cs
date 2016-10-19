@@ -4,6 +4,7 @@
     using System;
     using Definitions;
     using Providers;
+    using Microsoft.AspNetCore.Cors;
 
     [Route("api/definitions")]
     public class NumberDefinitionsController : Controller
