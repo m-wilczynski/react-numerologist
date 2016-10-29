@@ -6,7 +6,7 @@ class NumberDefinitionKeywords extends React.Component {
             <div>
                 <p>
                 { this.props.keywords.map((val, ind) => 
-                    <strong className="keyword-badge" key={ind}> { val } </strong>
+                    <span className="keyword-badge" key={ind}> { val } </span>
                 )}
                 </p>
             </div>
