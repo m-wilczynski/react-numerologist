@@ -22,3 +22,14 @@ body {
 .content {
     padding: 5px 10px;
 }
+
+.keyword-badge {
+    background-color: #504f4f;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 3px;
+    margin: 5px;
+    font-weight: 500;
+    font-size: 12px;
+}
+

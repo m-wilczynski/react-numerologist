@@ -6,7 +6,7 @@ class DefinitionsService extends BaseService {
         this.apiPath = "/definitions/";
     }
 
-    getDefinitionByBirthdate(birthDate) {
+    getDefinitionByBirthdate(birthDate, successCallback) {
         if (!this.commonValidator.isValidDate(birthDate))
         {
             throw new Error("Invalid date passed.");
@@ -16,7 +16,7 @@ class DefinitionsService extends BaseService {
             url: this.apiPath + "byBirthdate/" + birthDate
         })
         .then(function(response) {
-            console.log(response);  
+            successCallback(response);  
         })
         .catch(function(error) {
             console.log(error);
