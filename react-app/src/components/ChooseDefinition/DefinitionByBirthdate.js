@@ -1,19 +1,29 @@
 import React from 'react';
 import DefinitionsService from '../../services/DefinitionsService';
 import NumberDefinition from '../Definition/NumberDefinition';
+import CommonValidator from '../../common/CommonValidator';
 
 class DefinitionByBirthdate extends React.Component {
     constructor() {
         super();
         this.definitionsService = new DefinitionsService();
+        this.validator = new CommonValidator();
         this.state = {
-            isLoading: true,
+            isLoading: false,
             definition: null
         };
     }
     render() {
         return (
             <div>
+                { !this.state.isLoading && !this.state.definition ?
+                    <form onSubmit={this.requestDefinition.bind(this)}>
+                        <input type="text" name="day" placeholder="1"/>
+                        <input type="text" name="month" placeholder="1" />
+                        <input type="text" name="year" placeholder="2015" />
+                        <button type="submit"> Submit </button>
+                    </form>
+                    : "" }
                 { this.state.isLoading ? <p>Loading...</p> : ""}
                 { this.state.definition != null ?
                     <NumberDefinition data={this.state.definition} /> 
@@ -22,10 +32,15 @@ class DefinitionByBirthdate extends React.Component {
         );
     }
 
+    requestDefinition(event) {
 
-    componentDidMount() {
+        event.preventDefault();
+
+        //TODO: Handle errors
+        var date = this.handleFormInput(event.target);
+        this.setState({isLoading: true});
         var component = this;
-        this.definitionsService.getDefinitionByBirthdate(new Date("1/1/2015"), 
+        this.definitionsService.getDefinitionByBirthdate(date, 
             function(response) {
                 setTimeout(
                     function() {
@@ -37,6 +52,10 @@ class DefinitionByBirthdate extends React.Component {
                         console.log(response);
                     }, 1000); 
             });
+    }
+
+    handleFormInput(form) {
+        return new Date(form.day.value + "/" + form.month.value + "/" + form.year.value);
     }
 }
 

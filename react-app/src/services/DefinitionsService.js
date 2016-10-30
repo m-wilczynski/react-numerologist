@@ -13,7 +13,7 @@ class DefinitionsService extends BaseService {
         }
         return this.axios({
             method: "get",
-            url: this.apiPath + "byBirthdate/" + birthDate
+            url: this.apiPath + "byBirthdate/" + birthDate.toUTCString()
         })
         .then(function(response) {
             successCallback(response);  
