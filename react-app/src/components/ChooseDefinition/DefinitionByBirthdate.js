@@ -13,14 +13,15 @@ class DefinitionByBirthdate extends React.Component {
             definition: null
         };
     }
+
     render() {
         return (
             <div>
                 { !this.state.isLoading && !this.state.definition ?
                     <form onSubmit={this.requestDefinition.bind(this)}>
-                        <input type="text" name="day" placeholder="1"/>
-                        <input type="text" name="month" placeholder="1" />
-                        <input type="text" name="year" placeholder="2015" />
+                        <input type="text" name="day" placeholder="Day"/>
+                        <input type="text" name="month" placeholder="Month" />
+                        <input type="text" name="year" placeholder="Year" />
                         <button type="submit"> Submit </button>
                     </form>
                     : "" }
@@ -42,15 +43,10 @@ class DefinitionByBirthdate extends React.Component {
         var component = this;
         this.definitionsService.getDefinitionByBirthdate(date, 
             function(response) {
-                setTimeout(
-                    function() {
-                        component.setState(
-                        { 
-                            isLoading: false,
-                            definition: response.data
-                        });
-                        console.log(response);
-                    }, 1000); 
+                component.setState({ 
+                    isLoading: false,
+                    definition: response.data
+                }); 
             });
     }
 

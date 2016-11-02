@@ -23,6 +23,18 @@ class DefinitionsService extends BaseService {
         });
     }
 
+    getDefinitionByFullname(fullName, successCallback) {
+        return this.axios({
+            method: "get",
+            url: this.apiPath + "byFullname/" + fullName
+        })
+        .then(function(response) {
+            successCallback(response);  
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
+    }
 }
 
 export default DefinitionsService;

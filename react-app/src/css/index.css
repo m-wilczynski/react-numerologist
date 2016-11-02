@@ -33,3 +33,10 @@ body {
     font-size: 12px;
 }
 
+form input {
+    margin-right: 7.5px;
+}
+
+.fullname-input {
+    width: 70%;
+}
